@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">effective_mobile_task</string>
+    <string name="search_menu">Поиск</string>
+    <string name="favorite_menu">Избранное</string>
+    <string name="feedback_menu">Отклики</string>
+    <string name="message_menu">Сообщения</string>
+    <string name="profile_menu">Профиль</string>
 </resources>
