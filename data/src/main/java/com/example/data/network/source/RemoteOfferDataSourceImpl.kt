@@ -1,7 +1,6 @@
 package com.example.data.network.source
 
 import com.example.data.network.ApiInterface
-import com.example.data.network.mapper.NetworkMapper
 import com.example.data.network.mapper.OfferNetworkMapper
 import com.example.data.repository.offer.source.RemoteOfferDataSource
 import com.example.domain.entity.Offer
