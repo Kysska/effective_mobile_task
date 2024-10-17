@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="offer_icon_1">@color/dark_blue</color>
+    <color name="offer_icon_2">@color/dark_green</color>
+</resources>

@@ -9,4 +9,10 @@
     <dimen name="material_padding_normal">16dp</dimen>
     <dimen name="material_padding_small">8dp</dimen>
     <dimen name="material_padding_super_small">4dp</dimen>
+
+    <dimen name="offer_card">120dp</dimen>
+    <dimen name="offer_icon">35dp</dimen>
+
+    <dimen name="circle_radius">250dp</dimen>
+    <dimen name="card_radius">8dp</dimen>
 </resources>

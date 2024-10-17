@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/bound_background_card"
+    android:padding="@dimen/material_margin_normal"
+    android:layout_marginTop="@dimen/material_margin_small"
+    >
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/GreenTextStyle"
+        tools:text="@string/vacancy_card_now_watching" />
+
+    <CheckBox
+        android:id="@+id/favoriteCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/ImageCheckBox"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_marginTop="@dimen/material_margin_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/LargeBoldWhiteTextStyle"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:text="UI/UX Designer" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_marginTop="@dimen/material_margin_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/SmallBoldWhiteTextStyle"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:text="Минск" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_marginTop="@dimen/material_margin_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/SmallBoldWhiteTextStyle"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:text="Мобирикс" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="@dimen/material_margin_small"
+        android:layout_marginBottom="@dimen/material_margin_small"
+        android:src="@drawable/baseline_check_circle_outline_24"
+        app:layout_constraintBottom_toTopOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_margin_small"
+        android:textAppearance="@style/SmallBoldWhiteTextStyle"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:layout_editor_absoluteX="25dp"
+        tools:text="Опыт от 1 до 3 лет" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/baseline_work_24"
+        android:layout_marginBottom="@dimen/material_margin_small"
+        app:layout_constraintBottom_toTopOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="@+id/textView5"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_margin_small"
+        android:textAppearance="@style/BoldGrayTextStyle"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:text="@string/vacancy_card_published_date" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/material_margin_normal"
+        android:background="@drawable/circle_button_green"
+        android:text="@string/vacancy_card_button"
+        android:textAppearance="@style/BoldWhiteTextStyle"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="button_filter">@color/grey2</color>
+
     <color name="button_vacancy_card_primary">@color/green</color>
     <color name="button_vacancy_card_secondary">@color/dark_green</color>
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_item"
+    android:layout_width="@dimen/offer_card"
+    android:layout_height="@dimen/offer_card"
+    android:background="@drawable/bound_background_card"
+    android:padding="@dimen/material_padding_small"
+    android:layout_margin="@dimen/material_margin_small">
+
+    <include
+        android:id="@+id/icon_circle"
+        layout="@layout/icon_circle_vacancies_near"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/material_padding_small"
+        android:textAppearance="@style/BoldWhiteTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icon_circle"
+        tools:text="Вакансии рядом с вами" />
+
+    <Button
+        android:id="@+id/offer_button"
+        style="@style/OfferButtonStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_content"
+        android:textAppearance="@style/GreenTextStyle"
+        tools:text="Поднять" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
