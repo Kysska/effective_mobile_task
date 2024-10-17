@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="button_vacancy_card_primary">@color/green</color>
+    <color name="button_vacancy_card_secondary">@color/dark_green</color>
+
+    <color name="button_home_primary">@color/blue</color>
+    <color name="button_home_secondary">@color/dark_blue</color>
+</resources>

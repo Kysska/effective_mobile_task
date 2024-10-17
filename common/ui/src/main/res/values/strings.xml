@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">effective_mobile_task</string>
+    <!--menu-->
+    <string name="search_menu">Поиск</string>
+    <string name="favorite_menu">Избранное</string>
+    <string name="feedback_menu">Отклики</string>
+    <string name="message_menu">Сообщения</string>
+    <string name="profile_menu">Профиль</string>
+
+    <!--search-->
+    <string name="search_hint_text_home_fragment">Должность, ключевые слова</string>
+    <string name="search_hint_text_recommendation_fragment">Должность по подходящим вакансиям</string>
+
+<!--    home fragment-->
+    <string name="home_title">Вакансии для вас</string>
+    <string name="home_title_button">Ещё %d вакансии</string>
+
+<!--    vacancy card-->
+    <string name="vacancy_card_now_watching">Сейчас просматривают %d</string>
+    <string name="vacancy_card_published_date">Опубликовано %d</string>
+    <string name="vacancy_card_button">Откликнуться</string>
+
+
+<!--    offer card-->
+    <string name="offer_card_near_vacancies">Вакансии рядом с вами</string>
+    <string name="offer_card_level_up_resume">Поднять резюме в поиске</string>
+    <string name="offer_card_level_up_button">Поднять</string>
+    <string name="offer_card_temporary_job">Временная работа или подработка</string>
+
+<!--    favorite fragment-->
+    <string name="favorite_title">Избранное</string>
+    <string name="favorite_vacancy_count">%d Ваканский</string>
+
+<!--    vacancy recommendation fragment-->
+    <string name="recommendation_count_vacancy">%d ваканский</string>
+</resources>

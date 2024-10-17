@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BaseTextStyle">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/sf_pro_display_semibold</item>
+    </style>
+
+    <style name="BoldWhiteTextStyle" parent="BaseTextStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="GreenTextStyle" parent="BaseTextStyle">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">>@color/text_accent</item>
+    </style>
+
+    <style name="BoldGrayTextStyle" parent="BaseTextStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">>@color/text_secondary</item>
+    </style>
+
+    <style name="GrayTextStyle" parent="BaseTextStyle">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">>@color/text_secondary</item>
+    </style>
+
+    <style name="SmallBoldWhiteTextStyle" parent="BoldWhiteTextStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MediumBoldWhiteTextStyle" parent="BoldWhiteTextStyle">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="LargeBoldWhiteTextStyle" parent="BoldWhiteTextStyle">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+</resources>
