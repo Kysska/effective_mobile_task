@@ -19,6 +19,7 @@
 <!--    vacancy card-->
     <string name="vacancy_card_now_watching">Сейчас просматривают %d</string>
     <string name="vacancy_card_published_date">Опубликовано %d</string>
+    <string name="vacancy_card_uncorrected_published_date">Некоректная дата</string>
     <string name="vacancy_card_button">Откликнуться</string>
 
 

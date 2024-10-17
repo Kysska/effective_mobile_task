@@ -1,6 +1,6 @@
 package com.example.data.network.mapper
 
-interface NetworkMapper<FROM, TO> {
+internal interface NetworkMapper<FROM, TO> {
 
     fun map(from: TO): FROM
 

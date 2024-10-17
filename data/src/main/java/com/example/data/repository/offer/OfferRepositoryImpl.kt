@@ -5,7 +5,7 @@ import com.example.domain.OfferRepository
 import com.example.domain.entity.Offer
 import io.reactivex.Single
 
-class OfferRepositoryImpl(
+internal class OfferRepositoryImpl(
     private val remoteOfferDataSource: RemoteOfferDataSource
 ) : OfferRepository {
     override fun getOffers(): Single<List<Offer>> {

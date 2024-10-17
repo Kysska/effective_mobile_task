@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.favorite.databinding.FragmentFavoriteBinding
 
-class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
+internal class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
@@ -19,7 +19,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
