@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
+apply(from = "../../ktlint.gradle")
+
 android {
     namespace = "com.example.ui"
     compileSdk = 34
