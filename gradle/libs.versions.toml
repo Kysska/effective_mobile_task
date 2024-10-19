@@ -18,6 +18,8 @@ rxAndroid = "2.1.1"
 timber = "5.0.1"
 navigationFragmentKtx = "2.8.2"
 navigationUiKtx = "2.8.2"
+dagger = "2.46"
+daggerCompiler = "2.46"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -42,6 +44,8 @@ rxjava-android = { module = "io.reactivex.rxjava2:rxandroid", version.ref="rxAnd
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 
+dagger = { module="com.google.dagger:dagger", version.ref = "dagger"}
+dagger-compiler = { module= "com.google.dagger:dagger-compiler", version.ref = "daggerCompiler"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

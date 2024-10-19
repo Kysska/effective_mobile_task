@@ -48,6 +48,8 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(project(":domain"))
+    implementation(project(":feature:home"))
+    implementation(project(":feature:favorite"))
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -68,4 +70,8 @@ dependencies {
     //RxJava
     implementation(libs.rxjava)
     implementation(libs.rxjava.android)
+
+    //Dagger
+    implementation(libs.dagger)
+    implementation(libs.dagger.compiler)
 }

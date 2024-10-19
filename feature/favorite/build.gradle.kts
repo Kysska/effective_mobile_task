@@ -45,4 +45,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation(project(":common:ui"))
+    implementation(project(":core"))
+    implementation(project(":domain"))
+
+    //RxJava
+    implementation(libs.rxjava)
+    implementation(libs.rxjava.android)
+
+    implementation(libs.timber)
 }

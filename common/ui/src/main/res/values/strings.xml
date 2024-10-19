@@ -35,4 +35,5 @@
 
 <!--    vacancy recommendation fragment-->
     <string name="recommendation_count_vacancy">%d ваканский</string>
+    <string name="recommendation_filter_title">По соответствию</string>
 </resources>

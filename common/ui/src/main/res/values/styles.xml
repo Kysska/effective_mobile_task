@@ -12,7 +12,12 @@
 
     <style name="GreenTextStyle" parent="BaseTextStyle">
         <item name="android:textStyle">normal</item>
-        <item name="android:textColor">@color/text_accent</item>
+        <item name="android:textColor">@color/text_accent_green</item>
+    </style>
+
+    <style name="BlueTextStyle" parent="BaseTextStyle">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/text_accent_blue</item>
     </style>
 
     <style name="BoldGrayTextStyle" parent="BaseTextStyle">

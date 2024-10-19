@@ -3,5 +3,6 @@
     <color name="text_primary">@color/white</color>
     <color name="text_secondary">@color/grey3</color>
     <color name="text_hint">@color/grey5</color>
-    <color name="text_accent">@color/green</color>
+    <color name="text_accent_green">@color/green</color>
+    <color name="text_accent_blue">@color/blue</color>
 </resources>

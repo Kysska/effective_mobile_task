@@ -18,6 +18,6 @@
         android:title="@string/message_menu"/>
     <item
         android:id="@+id/profileFragment"
-        android:icon="@drawable/baseline_person_18"
+        android:icon="@drawable/baseline_person_24"
         android:title="@string/profile_menu"/>
 </menu>
