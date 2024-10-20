@@ -34,8 +34,9 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/material_margin_large"
+            android:layout_marginTop="@dimen/material_margin_large"
             android:textAppearance="@style/LargeBoldWhiteTextStyle"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerView"
             tools:text="@string/home_title" />
 
@@ -50,11 +51,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textView8"
             tools:listitem="@layout/vacancy_item" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/floating_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/material_padding_small"
             android:text="@string/home_title_button"
+            android:gravity="center"
             android:layout_marginBottom="@dimen/material_margin_normal"
             android:layout_marginEnd="@dimen/material_margin_normal"
             android:background="@drawable/circle_button_blue"

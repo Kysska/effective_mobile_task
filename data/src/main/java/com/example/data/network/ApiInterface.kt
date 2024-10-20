@@ -14,7 +14,7 @@ interface ApiInterface {
         @Query("export") export: String = EXPORT_FILE
     ): Single<List<OfferResponse>>
 
-    @GET("u/0/uc")
+    @GET("u/0/uc/vacancies")
     fun getAllVacancies(
         @Query("id") id: String = ID_FILE,
         @Query("export") export: String = EXPORT_FILE

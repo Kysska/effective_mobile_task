@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-internal object ApiClient {
+object ApiClient {
 
     private var client: OkHttpClient = OkHttpClient.Builder()
         .apply {

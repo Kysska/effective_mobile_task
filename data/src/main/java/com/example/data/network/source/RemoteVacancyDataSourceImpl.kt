@@ -7,7 +7,7 @@ import com.example.domain.entity.Vacancy
 import io.reactivex.Single
 import timber.log.Timber
 
-internal class RemoteVacancyDataSourceImpl(
+class RemoteVacancyDataSourceImpl(
     private val apiInterface: ApiInterface,
     private val networkMapper: VacancyNetworkMapper
 ) : RemoteVacancyDataSource {

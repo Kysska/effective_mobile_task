@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 apply(from = "../../ktlint.gradle")
@@ -56,4 +57,8 @@ dependencies {
     implementation(libs.rxjava.android)
 
     implementation(libs.timber)
+
+    //Dagger
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 }

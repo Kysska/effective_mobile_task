@@ -7,7 +7,7 @@ import com.example.domain.entity.Offer
 import io.reactivex.Single
 import timber.log.Timber
 
-internal class RemoteOfferDataSourceImpl(
+class RemoteOfferDataSourceImpl(
     private val apiInterface: ApiInterface,
     private val networkMapper: OfferNetworkMapper
 ) : RemoteOfferDataSource {

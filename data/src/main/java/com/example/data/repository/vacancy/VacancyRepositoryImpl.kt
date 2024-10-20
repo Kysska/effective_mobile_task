@@ -5,7 +5,7 @@ import com.example.domain.VacancyRepository
 import com.example.domain.entity.Vacancy
 import io.reactivex.Single
 
-internal class VacancyRepositoryImpl(
+class VacancyRepositoryImpl(
     private val remoteVacancyDataSource: RemoteVacancyDataSource
 ) : VacancyRepository {
     override fun getAllVacancy(): Single<List<Vacancy>> {

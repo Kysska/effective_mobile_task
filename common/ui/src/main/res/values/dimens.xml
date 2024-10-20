@@ -13,6 +13,8 @@
     <dimen name="offer_card">120dp</dimen>
     <dimen name="offer_icon">35dp</dimen>
 
+    <dimen name="normal_icon">35dp</dimen>
+
     <dimen name="circle_radius">250dp</dimen>
     <dimen name="card_radius">8dp</dimen>
 </resources>

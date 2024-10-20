@@ -5,8 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.effective_mobile_task.databinding.ActivityMainBinding
+import com.example.effective_mobile_task.di.AppComponent
+import com.example.effective_mobile_task.di.DiProvider
+import com.example.effective_mobile_task.di.SubComponents
+import com.example.home.di.HomeComponent
+import com.example.home.di.HomeComponentProvider
+import timber.log.Timber
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), HomeComponentProvider {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -21,5 +27,9 @@ class MainActivity : AppCompatActivity() {
         val navController = host.navController
 
         binding.bottomNavigationView.setupWithNavController(navController)
+    }
+
+    override fun provideHomeComponent(): HomeComponent {
+        return DiProvider.appComponent().homeComponent.create()
     }
 }

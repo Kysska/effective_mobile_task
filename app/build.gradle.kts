@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("org.jetbrains.kotlin.kapt")
 }
 
 apply(from = "../ktlint.gradle")
@@ -39,6 +40,10 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
@@ -53,8 +58,15 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.timber)
 
     implementation(project(":feature:home"))
+    implementation(project(":domain"))
+    implementation(project(":data"))
     implementation(project(":feature:favorite"))
     implementation(project(":common:ui"))
+
+    //Dagger
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
 }

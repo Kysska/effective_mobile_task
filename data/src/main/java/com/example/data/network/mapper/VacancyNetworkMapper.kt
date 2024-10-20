@@ -3,7 +3,7 @@ package com.example.data.network.mapper
 import com.example.data.network.dto.VacancyResponse
 import com.example.domain.entity.Vacancy
 
-internal object VacancyNetworkMapper : NetworkMapper<Vacancy, VacancyResponse> {
+object VacancyNetworkMapper : NetworkMapper<Vacancy, VacancyResponse> {
     override fun map(from: VacancyResponse): Vacancy {
         return Vacancy(
             id = from.id ?: "",
