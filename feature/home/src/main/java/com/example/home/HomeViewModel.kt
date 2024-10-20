@@ -3,7 +3,7 @@ package com.example.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.core.ViewState
+import com.example.ui.view.ViewState
 import com.example.core.util.applySchedulers
 import com.example.domain.VacancyRepository
 import com.example.domain.usecase.GetOffersUseCase

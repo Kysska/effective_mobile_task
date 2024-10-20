@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.core.ViewState
+import com.example.ui.view.ViewState
 import com.example.home.databinding.FragmentRecomendationBinding
 import com.example.home.di.HomeComponentProvider
 import com.example.ui.adapter.VacanciesAdapter

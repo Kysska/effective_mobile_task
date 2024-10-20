@@ -3,7 +3,7 @@ package com.example.favorite
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.core.ViewState
+import com.example.ui.view.ViewState
 import com.example.core.util.applySchedulers
 import com.example.domain.VacancyRepository
 import com.example.ui.utils.FavoriteEvents

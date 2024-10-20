@@ -1,4 +1,4 @@
-package com.example.core
+package com.example.ui.view
 
 sealed class ViewState<out T> {
     data class Success<out T>(val data: T) : ViewState<T>()

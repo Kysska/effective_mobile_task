@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.core.ViewState
+import com.example.ui.view.ViewState
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.HomeComponentProvider
 import com.example.home.navigation.NavigationInterface

@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.core.ViewState
+import com.example.ui.view.ViewState
 import com.example.favorite.databinding.FragmentFavoriteBinding
 import com.example.favorite.di.FavoriteComponentProvider
 import com.example.ui.utils.FavoriteEvents
