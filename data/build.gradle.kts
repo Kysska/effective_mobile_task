@@ -79,4 +79,12 @@ dependencies {
     //Dagger
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
+
+    //Room
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
+    implementation(libs.room.ktx)
+    androidTestImplementation(libs.room.testing)
+    implementation(libs.room.rxjava2)
+
 }

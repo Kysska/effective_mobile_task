@@ -2,10 +2,8 @@ package com.example.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.core.ViewState
@@ -13,7 +11,6 @@ import com.example.home.databinding.FragmentRecomendationBinding
 import com.example.home.di.HomeComponentProvider
 import com.example.ui.adapter.VacanciesAdapter
 import com.example.ui.utils.setFormattedText
-import com.example.ui.view.CustomViewInputEditText
 import javax.inject.Inject
 
 class RecommendationFragment : Fragment(R.layout.fragment_recomendation) {
@@ -25,7 +22,7 @@ class RecommendationFragment : Fragment(R.layout.fragment_recomendation) {
     lateinit var homeViewModel: HomeViewModel
 
     private val vacanciesAdapter by lazy {
-        VacanciesAdapter()
+        VacanciesAdapter { vacancy, isCheched -> homeViewModel.onFavoriteCheckboxChanged(vacancy, isCheched) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

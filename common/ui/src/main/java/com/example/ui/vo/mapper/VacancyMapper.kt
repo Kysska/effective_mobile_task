@@ -6,8 +6,8 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 import timber.log.Timber
 
-object VacancyMapper {
-    fun map(vacancy: Vacancy): VacancyView {
+object VacancyMapper : ViewMapper<Vacancy, VacancyView> {
+    override fun map(vacancy: Vacancy): VacancyView {
         return VacancyView(
             id = vacancy.id,
             title = vacancy.title,
@@ -31,5 +31,18 @@ object VacancyMapper {
             Timber.tag("uncorrected date").e(e)
             return ""
         }
+    }
+
+    override fun reverseMap(to: VacancyView): Vacancy {
+        return Vacancy(
+            id = to.id,
+            title = to.title,
+            town = to.town,
+            company = to.company,
+            previewExperience = to.previewExperience,
+            isFavorite = to.isFavorite,
+            lookingNumber = to.lookingNumber.toInt(),
+            publishedDate = to.formattedPublishedDate
+        )
     }
 }

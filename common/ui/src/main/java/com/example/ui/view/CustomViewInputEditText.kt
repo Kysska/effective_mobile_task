@@ -2,7 +2,6 @@ package com.example.ui.view
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.MotionEvent
 import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 

@@ -23,6 +23,36 @@ fun Button.setTextOrHide(text: String?) {
     }
 }
 
+fun TextView.setFormattedText(resId: Int, count: Int) {
+    val template = context.getString(resId, count)
+    when {
+        count % 10 == 1 && count % 100 != 11 -> {
+            this.text = String.format(template, count)
+        }
+        count % 10 in 2..4 && count % 100 !in 12..14 -> {
+            this.text = String.format(template, count)
+        }
+        else -> {
+            this.text = String.format(template, count)
+        }
+    }
+}
+
+fun Button.setFormattedText(resId: Int, count: Int) {
+    val template = context.getString(resId, count)
+    when {
+        count % 10 == 1 && count % 100 != 11 -> {
+            this.text = String.format(template, count)
+        }
+        count % 10 in 2..4 && count % 100 !in 12..14 -> {
+            this.text = String.format(template, count)
+        }
+        else -> {
+            this.text = String.format(template, count)
+        }
+    }
+}
+
 fun TextView.setFormattedText(resId: Int, vararg formatArgs: Any?) {
     this.text = context.getString(resId, *formatArgs)
 }

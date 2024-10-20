@@ -3,6 +3,7 @@ package com.example.data.di
 import com.example.data.repository.offer.OfferRepositoryImpl
 import com.example.data.repository.offer.source.RemoteOfferDataSource
 import com.example.data.repository.vacancy.VacancyRepositoryImpl
+import com.example.data.repository.vacancy.source.LocalVacancyDataSource
 import com.example.data.repository.vacancy.source.RemoteVacancyDataSource
 import com.example.domain.OfferRepository
 import com.example.domain.VacancyRepository
@@ -25,10 +26,12 @@ class RepositoryModule {
     @Provides
     @Singleton
     fun provideVacancyRepository(
-        remoteVacancyDataSource: RemoteVacancyDataSource
+        remoteVacancyDataSource: RemoteVacancyDataSource,
+        localVacancyDataSource: LocalVacancyDataSource
     ): VacancyRepository {
         return VacancyRepositoryImpl(
-            remoteVacancyDataSource
+            remoteVacancyDataSource,
+            localVacancyDataSource
         )
     }
 }

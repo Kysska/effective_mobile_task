@@ -25,7 +25,6 @@
         style="@style/ImageCheckBox"
         android:layout_width="@dimen/checkbox_icon"
         android:layout_height="@dimen/checkbox_icon"
-        android:background="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

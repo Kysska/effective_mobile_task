@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import com.example.core.ViewState
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.HomeComponentProvider
 import com.example.home.navigation.NavigationInterface
 import com.example.ui.adapter.OffersAdapter
 import com.example.ui.adapter.VacanciesAdapter
+import com.example.ui.utils.FavoriteEvents
 import com.example.ui.utils.setFormattedText
 import javax.inject.Inject
 
@@ -28,7 +28,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private val vacanciesAdapter by lazy {
-        VacanciesAdapter()
+        VacanciesAdapter { vacancy, isCheched -> homeViewModel.onFavoriteCheckboxChanged(vacancy, isCheched) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -106,6 +106,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun observableCountVacancies() {
         homeViewModel.countVacancies.observe(viewLifecycleOwner) { count ->
             binding.floatingButton.setFormattedText(com.example.ui.R.string.home_title_button, count)
+        }
+    }
+
+    private fun observableCountFavoriteVacancies() {
+        homeViewModel.countVacancies.observe(viewLifecycleOwner) { count ->
+            FavoriteEvents.postFavoriteCount(count)
         }
     }
 

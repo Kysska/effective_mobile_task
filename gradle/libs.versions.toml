@@ -20,6 +20,7 @@ navigationFragmentKtx = "2.8.2"
 navigationUiKtx = "2.8.2"
 dagger = "2.46"
 daggerCompiler = "2.46"
+roomVersion = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -46,6 +47,12 @@ androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation
 
 dagger = { module="com.google.dagger:dagger", version.ref = "dagger"}
 dagger-compiler = { module= "com.google.dagger:dagger-compiler", version.ref = "daggerCompiler"}
+
+room-runtime = { module="androidx.room:room-runtime", version.ref="roomVersion"}
+room-compiler = { module="androidx.room:room-compiler", version.ref="roomVersion"}
+room-ktx = { module="androidx.room:room-ktx", version.ref="roomVersion"}
+room-testing = { module="androidx.room:room-testing", version.ref="roomVersion"}
+room-rxjava2 = { module="androidx.room:room-rxjava2", version.ref="roomVersion"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

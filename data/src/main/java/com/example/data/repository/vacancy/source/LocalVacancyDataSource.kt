@@ -1,14 +1,13 @@
-package com.example.domain
+package com.example.data.repository.vacancy.source
 
 import com.example.domain.entity.Vacancy
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 
-interface VacancyRepository {
-    fun getAllVacancy(): Single<List<Vacancy>>
-    fun getAllFavoriteVacancy(): Observable<List<Vacancy>>
+interface LocalVacancyDataSource {
+    fun getAllVacancies(): Observable<List<Vacancy>>
+    fun isVacancyExists(id: String): Single<Boolean>
     fun insertVacancy(vacancy: Vacancy): Completable
     fun deleteVacancy(vacancy: Vacancy): Completable
-    fun isVacancyExists(id: String): Single<Boolean>
 }

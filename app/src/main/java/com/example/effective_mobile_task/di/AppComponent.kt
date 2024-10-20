@@ -1,6 +1,7 @@
 package com.example.effective_mobile_task.di
 
 import android.content.Context
+import com.example.favorite.di.FavoriteComponent
 import com.example.home.di.HomeComponent
 import dagger.BindsInstance
 import dagger.Component
@@ -19,4 +20,5 @@ interface AppComponent {
     }
 
     val homeComponent: HomeComponent.Factory
+    val favoriteComponent: FavoriteComponent.Factory
 }

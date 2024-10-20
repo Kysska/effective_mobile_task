@@ -7,7 +7,9 @@
     <item
         android:id="@+id/favoriteFragment"
         android:icon="@drawable/baseline_favorite_border_24"
-        android:title="@string/favorite_menu"/>
+        android:title="@string/favorite_menu"
+        android:actionLayout="@layout/badge"
+        />
     <item
         android:id="@+id/feedbackFragment"
         android:icon="@drawable/baseline_email_24"

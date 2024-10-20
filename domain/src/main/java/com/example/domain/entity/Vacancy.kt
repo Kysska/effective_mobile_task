@@ -6,7 +6,7 @@ data class Vacancy(
     val town: String = "",
     val company: String = "",
     val previewExperience: String = "",
-    val isFavorite: Boolean = false,
+    var isFavorite: Boolean = false,
     val lookingNumber: Int = 0,
     val publishedDate: String = ""
 )

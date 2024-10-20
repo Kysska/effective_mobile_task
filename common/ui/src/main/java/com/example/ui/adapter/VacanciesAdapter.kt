@@ -9,11 +9,11 @@ import com.example.ui.databinding.VacancyItemBinding
 import com.example.ui.utils.setFormattedText
 import com.example.ui.vo.VacancyView
 
-class VacanciesAdapter : RecyclerView.Adapter<VacanciesAdapter.VacancyViewHolder>() {
+class VacanciesAdapter(private val onFavoriteChanged: (VacancyView, Boolean) -> Unit) : RecyclerView.Adapter<VacanciesAdapter.VacancyViewHolder>() {
 
     private var vacancies: List<VacancyView> = emptyList()
 
-    inner class VacancyViewHolder(private val binding: VacancyItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class VacancyViewHolder(val binding: VacancyItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(vacancyView: VacancyView) {
             binding.title.text = vacancyView.title
@@ -32,6 +32,12 @@ class VacanciesAdapter : RecyclerView.Adapter<VacanciesAdapter.VacancyViewHolder
 
     override fun onBindViewHolder(holder: VacancyViewHolder, position: Int) {
         holder.bind(vacancies[position])
+
+        holder.binding.favoriteCheckBox.setOnCheckedChangeListener(null)
+        holder.binding.favoriteCheckBox.isChecked = vacancies[position].isFavorite
+        holder.binding.favoriteCheckBox.setOnCheckedChangeListener { _, isChecked ->
+            onFavoriteChanged(vacancies[position], isChecked)
+        }
     }
 
     override fun getItemCount(): Int = vacancies.size
