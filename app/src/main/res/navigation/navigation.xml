@@ -16,4 +16,10 @@
         android:label="Favorite"
         tools:layout="@layout/fragment_favorite" />
 
+    <fragment
+        android:id="@+id/recommendationFragment"
+        android:name="com.example.home.RecommendationFragment"
+        android:label="RecommendationFragment"
+        tools:layout="@layout/fragment_recomendation" />
+
 </navigation>

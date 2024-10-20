@@ -4,5 +4,6 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
         <item name="buttonStyle">@style/BaseButtonStyle</item>
+        <item name="android:statusBarColor">@color/background_primary</item>
     </style>
 </resources>

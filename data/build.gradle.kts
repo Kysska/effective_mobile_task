@@ -20,6 +20,8 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"https://drive.usercontent.google.com/\"")
+            buildConfigField("String", "ID_FILE", "\"1z4TbeDkbfXkvgpoJprXbN85uCcD7f00r\"")
+            buildConfigField("String", "EXPORT_FILE", "\"download\"")
         }
         release {
             isMinifyEnabled = false
@@ -27,6 +29,8 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField("String", "ID_FILE", "\"1z4TbeDkbfXkvgpoJprXbN85uCcD7f00r\"")
+            buildConfigField("String", "EXPORT_FILE", "\"download\"")
             buildConfigField("String", "BASE_URL", "\"https://drive.usercontent.google.com/\"")
         }
     }

@@ -1,9 +1,7 @@
 package com.example.effective_mobile_task
 
 import android.app.Application
-import com.example.effective_mobile_task.di.AppComponent
 import com.example.effective_mobile_task.di.DiProvider
-import com.example.effective_mobile_task.di.SubComponents
 import timber.log.Timber
 
 class JobFinderApp : Application() {
@@ -26,7 +24,7 @@ class JobFinderApp : Application() {
     }
 
     companion object {
-        var instance:JobFinderApp? = null
+        var instance: JobFinderApp? = null
             private set
     }
 }

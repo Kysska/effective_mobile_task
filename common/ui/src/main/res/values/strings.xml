@@ -14,11 +14,11 @@
 
 <!--    home fragment-->
     <string name="home_title">Вакансии для вас</string>
-    <string name="home_title_button">Ещё %d вакансии</string>
+    <string name="home_title_button">Ещё %s вакансии</string>
 
 <!--    vacancy card-->
-    <string name="vacancy_card_now_watching">Сейчас просматривают %d</string>
-    <string name="vacancy_card_published_date">Опубликовано %d</string>
+    <string name="vacancy_card_now_watching">Сейчас просматривают %s</string>
+    <string name="vacancy_card_published_date">Опубликовано %s</string>
     <string name="vacancy_card_uncorrected_published_date">Некоректная дата</string>
     <string name="vacancy_card_button">Откликнуться</string>
 
@@ -31,9 +31,9 @@
 
 <!--    favorite fragment-->
     <string name="favorite_title">Избранное</string>
-    <string name="favorite_vacancy_count">%d Ваканский</string>
+    <string name="favorite_vacancy_count">%s Ваканский</string>
 
 <!--    vacancy recommendation fragment-->
-    <string name="recommendation_count_vacancy">%d ваканский</string>
+    <string name="recommendation_count_vacancy">%s ваканский</string>
     <string name="recommendation_filter_title">По соответствию</string>
 </resources>

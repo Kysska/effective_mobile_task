@@ -1,7 +1,6 @@
 package com.example.effective_mobile_task.di
 
 import android.app.Application
-import timber.log.Timber
 
 object DiProvider {
     private lateinit var appComponent: AppComponent

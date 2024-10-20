@@ -30,5 +30,4 @@ class RemoteDataModule {
             VacancyNetworkMapper
         )
     }
-
 }

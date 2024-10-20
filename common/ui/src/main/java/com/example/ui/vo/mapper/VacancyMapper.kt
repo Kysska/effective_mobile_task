@@ -15,7 +15,7 @@ object VacancyMapper {
             company = vacancy.company,
             previewExperience = vacancy.previewExperience,
             isFavorite = vacancy.isFavorite,
-            lookingNumber = vacancy.lookingNumber,
+            lookingNumber = vacancy.lookingNumber.toString(),
             formattedPublishedDate = formattedPublishedDate(vacancy.publishedDate)
         )
     }

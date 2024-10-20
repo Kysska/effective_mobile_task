@@ -69,12 +69,15 @@ class HomeViewModel(
     }
 
     fun getCountVacancies() {
-        val currentState = _vacanciesState.value
-        _countVacancies.value = 0
-
-        if (currentState is ViewState.Success) {
-            _countVacancies.value = currentState.data.size
-        }
+        compositeDisposable.add(
+            getVacanciesUseCase.getAllVacanciesCount()
+                .applySchedulers()
+                .subscribe({ count ->
+                    _countVacancies.value = count
+                }, { error ->
+                    _countVacancies.value = 0
+                })
+        )
     }
 
     override fun onCleared() {

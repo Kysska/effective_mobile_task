@@ -12,9 +12,9 @@ class RemoteVacancyDataSourceImpl(
     private val networkMapper: VacancyNetworkMapper
 ) : RemoteVacancyDataSource {
     override fun getVacancies(): Single<List<Vacancy>> {
-        return apiInterface.getAllVacancies()
+        return apiInterface.getAllResponse()
             .map { response ->
-                networkMapper.map(response)
+                networkMapper.map(response.vacancyResponse ?: emptyList())
             }
             .doOnError { throwable ->
                 Timber.tag("offer data source").e(throwable)

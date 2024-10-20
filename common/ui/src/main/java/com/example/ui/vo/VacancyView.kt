@@ -7,6 +7,6 @@ data class VacancyView(
     val company: String,
     val previewExperience: String,
     val isFavorite: Boolean,
-    val lookingNumber: Int,
+    val lookingNumber: String,
     val formattedPublishedDate: String
 )

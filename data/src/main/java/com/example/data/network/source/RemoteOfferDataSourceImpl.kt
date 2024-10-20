@@ -12,9 +12,9 @@ class RemoteOfferDataSourceImpl(
     private val networkMapper: OfferNetworkMapper
 ) : RemoteOfferDataSource {
     override fun getOffers(): Single<List<Offer>> {
-        return apiInterface.getAllOffers()
+        return apiInterface.getAllResponse()
             .map { response ->
-                networkMapper.map(response)
+                networkMapper.map(response.offerResponse ?: emptyList())
             }
             .doOnError { throwable ->
                 Timber.tag("offer data source").e(throwable)

@@ -12,6 +12,11 @@ class GetVacanciesUseCase(
             .map { vacancies -> if (showAll) vacancies else vacancies.take(DEFAULT_LIMIT_VACANCIES) }
     }
 
+    fun getAllVacanciesCount(): Single<Int> {
+        return vacancyRepository.getAllVacancy()
+            .map { it.size }
+    }
+
     companion object {
         private const val DEFAULT_LIMIT_VACANCIES = 3
     }

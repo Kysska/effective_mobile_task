@@ -9,7 +9,7 @@ object OfferNetworkMapper : NetworkMapper<Offer, OfferResponse> {
             id = from.id ?: "",
             title = from.title ?: "",
             link = from.link ?: "",
-            buttonText = from.button?.text ?: ""
+            buttonText = from.button?.text
         )
     }
 }

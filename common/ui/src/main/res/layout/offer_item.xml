@@ -6,36 +6,39 @@
     android:layout_width="@dimen/offer_card"
     android:layout_height="@dimen/offer_card"
     android:background="@drawable/bound_background_card"
-    android:padding="@dimen/material_padding_small"
+    android:padding="@dimen/material_padding_normal"
     android:layout_margin="@dimen/material_margin_small">
 
-    <include
-        android:id="@+id/icon_circle"
-        layout="@layout/icon_circle_vacancies_near"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
+    <ViewStub
+        android:id="@+id/icon_circle_stub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout="@layout/icon_circle_vacancies_near" />
 
     <TextView
         android:id="@+id/text_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/material_padding_small"
         android:textAppearance="@style/BoldWhiteTextStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/icon_circle"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Вакансии рядом с вами" />
 
     <Button
         android:id="@+id/offer_button"
         style="@style/OfferButtonStyle"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:gravity="fill"
         android:textAppearance="@style/GreenTextStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_content"
         tools:text="Поднять" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

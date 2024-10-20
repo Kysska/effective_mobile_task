@@ -3,12 +3,12 @@
     <style name="BaseTextStyle">
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:fontFamily">@font/sf_pro_display_semibold</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/text_normal_size</item>
     </style>
 
     <style name = "BaseButtonStyle">
-        <item name="android:backgroundTint">@null</item>
         <item name="android:background">@null</item>
+        <item name="android:textColor">@color/text_primary</item>
     </style>
 
     <style name="BoldWhiteTextStyle" parent="BaseTextStyle">
@@ -18,6 +18,7 @@
     <style name="GreenTextStyle" parent="BaseTextStyle">
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/text_accent_green</item>
+        <item name="android:textSize">@dimen/text_small_size</item>
     </style>
 
     <style name="BlueTextStyle" parent="BaseTextStyle">
@@ -41,24 +42,19 @@
     </style>
 
     <style name="SmallBoldWhiteTextStyle" parent="BoldWhiteTextStyle">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/text_small_size</item>
     </style>
 
     <style name="MediumBoldWhiteTextStyle" parent="BoldWhiteTextStyle">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/text_normal_size</item>
     </style>
 
     <style name="LargeBoldWhiteTextStyle" parent="BoldWhiteTextStyle">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">@dimen/text_large_size</item>
     </style>
 
 
     <style name="SearchEditTextStyle">
-        <item name="android:layout_width">0dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginEnd">@dimen/material_margin_small</item>
-        <item name="android:background">@drawable/bound_background_other</item>
-        <item name="android:drawableStart">@drawable/baseline_search_24</item>
         <item name="android:hint">@string/search_hint_text_home_fragment</item>
         <item name="android:inputType">text</item>
         <item name="android:padding">@dimen/material_padding_small</item>
@@ -75,7 +71,8 @@
 
     <style name="OfferButtonStyle">
         <item name="android:background">@null</item>
-        <item name="android:layout_margin">@dimen/material_margin_small</item>
+        <item name="android:textColor">@color/text_accent_green</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
     </style>
 
     <style name="ImageCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
