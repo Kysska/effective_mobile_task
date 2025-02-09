@@ -2,24 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/homeFragment"
-        android:icon="@drawable/baseline_search_24"
+        android:icon="@drawable/icon_search"
         android:title="@string/search_menu"/>
     <item
         android:id="@+id/favoriteFragment"
-        android:icon="@drawable/baseline_favorite_border_24"
+        android:icon="@drawable/icon_like"
         android:title="@string/favorite_menu"
         android:actionLayout="@layout/badge"
         />
     <item
         android:id="@+id/feedbackFragment"
-        android:icon="@drawable/baseline_email_24"
+        android:icon="@drawable/icon_offer"
         android:title="@string/feedback_menu"/>
     <item
         android:id="@+id/messageFragment"
-        android:icon="@drawable/baseline_mode_comment_24"
+        android:icon="@drawable/icon_message"
         android:title="@string/message_menu"/>
     <item
         android:id="@+id/profileFragment"
-        android:icon="@drawable/baseline_person_24"
+        android:icon="@drawable/icon_user"
         android:title="@string/profile_menu"/>
 </menu>

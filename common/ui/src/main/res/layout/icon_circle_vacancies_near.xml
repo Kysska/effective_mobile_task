@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="Icon"
         android:src="@drawable/baseline_location_on_24"
+        android:padding="@dimen/material_margin_small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

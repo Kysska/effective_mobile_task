@@ -25,6 +25,7 @@
         style="@style/ImageCheckBox"
         android:layout_width="@dimen/checkbox_icon"
         android:layout_height="@dimen/checkbox_icon"
+        android:layout_marginTop="@dimen/material_margin_small"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/material_margin_small"
         android:layout_marginTop="@dimen/material_margin_small"
-        android:textAppearance="@style/LargeBoldWhiteTextStyle"
+        android:textAppearance="@style/MediumBoldWhiteTextStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nowWatchingText"
         tools:text="UI/UX Designer" />
@@ -45,7 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/material_margin_small"
         android:layout_marginTop="@dimen/material_margin_small"
-        android:textAppearance="@style/SmallBoldWhiteTextStyle"
+        android:textAppearance="@style/SmallWhiteTextStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title"
         tools:text="Минск" />
@@ -55,19 +56,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/material_margin_small"
-        android:layout_marginTop="@dimen/material_margin_small"
-        android:textAppearance="@style/SmallBoldWhiteTextStyle"
+        android:layout_marginTop="@dimen/material_margin_super_small"
+        android:textAppearance="@style/SmallWhiteTextStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/town"
         tools:text="Мобирикс" />
 
     <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_marginStart="@dimen/material_margin_small"
         android:layout_marginBottom="@dimen/material_margin_small"
         android:background="@null"
-        android:src="@drawable/baseline_check_circle_outline_24"
+        android:src="@drawable/icon_check_mark"
         app:layout_constraintBottom_toTopOf="@+id/experience"
         app:layout_constraintStart_toEndOf="@+id/company" />
 
@@ -77,19 +78,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/material_margin_small"
         android:layout_marginStart="@dimen/material_margin_small"
-        android:textAppearance="@style/SmallBoldWhiteTextStyle"
+        android:textAppearance="@style/SmallWhiteTextStyle"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/company"
         tools:text="Опыт от 1 до 3 лет" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
         android:layout_marginStart="@dimen/material_margin_small"
         android:layout_marginBottom="@dimen/material_margin_small"
         android:background="@null"
-        android:src="@drawable/baseline_work_24"
+        android:src="@drawable/icon_experience"
         app:layout_constraintBottom_toTopOf="@+id/publishedDate"
         app:layout_constraintEnd_toStartOf="@+id/experience"
         app:layout_constraintHorizontal_bias="0.0"
@@ -103,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/material_margin_small"
         android:layout_marginTop="@dimen/material_margin_small"
-        android:textAppearance="@style/BoldGrayTextStyle"
+        android:textAppearance="@style/GrayTextStyle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/experience"
         tools:text="@string/vacancy_card_published_date" />
@@ -113,10 +114,11 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/material_padding_small"
         android:layout_marginTop="@dimen/material_margin_normal"
-        android:background="@drawable/circle_button_green"
+        android:background="@drawable/green_button_background"
         android:gravity="center"
         android:text="@string/vacancy_card_button"
-        android:textAppearance="@style/BoldWhiteTextStyle"
+        android:textAppearance="@style/SmallWhiteTextStyle"
+        android:textColor="@color/text_color_checked"
         app:layout_constraintTop_toBottomOf="@+id/publishedDate"
         />
 

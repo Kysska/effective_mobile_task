@@ -31,6 +31,8 @@ class VacanciesAdapter(private val onFavoriteChanged: (VacancyView, Boolean) -> 
     }
 
     override fun onBindViewHolder(holder: VacancyViewHolder, position: Int) {
+        if (position >= vacancies.size) return
+
         holder.bind(vacancies[position])
 
         holder.binding.favoriteCheckBox.setOnCheckedChangeListener(null)

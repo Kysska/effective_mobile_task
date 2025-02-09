@@ -61,7 +61,9 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
                 }
                 is ViewState.Success -> {
                     binding.progressBar.progressBar.visibility = View.GONE
-                    vacanciesAdapter.submitList(state.data)
+                    if (state.data.isNotEmpty()) {
+                        vacanciesAdapter.submitList(state.data)
+                    }
                 }
                 is ViewState.Error -> {
                     binding.progressBar.progressBar.visibility = View.GONE

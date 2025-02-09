@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.ui.view.ViewState
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.HomeComponentProvider
 import com.example.home.navigation.NavigationInterface
@@ -13,6 +12,7 @@ import com.example.ui.adapter.OffersAdapter
 import com.example.ui.adapter.VacanciesAdapter
 import com.example.ui.utils.FavoriteEvents
 import com.example.ui.utils.setFormattedText
+import com.example.ui.view.ViewState
 import javax.inject.Inject
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -94,7 +94,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
                 is ViewState.Success -> {
                     binding.progressBar.progressBar.visibility = View.GONE
-                    vacanciesAdapter.submitList(state.data)
+                    if (state.data.isNotEmpty()) {
+                        vacanciesAdapter.submitList(state.data)
+                    }
                 }
                 is ViewState.Error -> {
                     binding.progressBar.progressBar.visibility = View.GONE

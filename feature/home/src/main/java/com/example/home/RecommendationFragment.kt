@@ -6,11 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.ui.view.ViewState
 import com.example.home.databinding.FragmentRecomendationBinding
 import com.example.home.di.HomeComponentProvider
 import com.example.ui.adapter.VacanciesAdapter
 import com.example.ui.utils.setFormattedText
+import com.example.ui.view.ViewState
 import javax.inject.Inject
 
 class RecommendationFragment : Fragment(R.layout.fragment_recomendation) {
@@ -63,8 +63,10 @@ class RecommendationFragment : Fragment(R.layout.fragment_recomendation) {
                     binding.progressBar.progressBar.visibility = View.VISIBLE
                 }
                 is ViewState.Success -> {
-                    vacanciesAdapter.submitList(state.data)
                     binding.progressBar.progressBar.visibility = View.GONE
+                    if (state.data.isNotEmpty()) {
+                        vacanciesAdapter.submitList(state.data)
+                    }
                 }
                 is ViewState.Error -> {
                     binding.progressBar.progressBar.visibility = View.GONE

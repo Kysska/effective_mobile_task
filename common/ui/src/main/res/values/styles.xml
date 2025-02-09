@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="BaseTextStyle">
+    <style name="BaseSmallTextStyle">
         <item name="android:textColor">@color/text_primary</item>
-        <item name="android:fontFamily">@font/sf_pro_display_semibold</item>
+        <item name="android:fontFamily">@font/sf_pro_display_regular</item>
+        <item name="android:textSize">@dimen/text_normal_size</item>
+    </style>
+
+    <style name="BaseMediumTextStyle">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:fontFamily">@font/sf_pro_display_medium</item>
         <item name="android:textSize">@dimen/text_normal_size</item>
     </style>
 
@@ -11,45 +17,52 @@
         <item name="android:textColor">@color/text_primary</item>
     </style>
 
-    <style name="BoldWhiteTextStyle" parent="BaseTextStyle">
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="GreenTextStyle" parent="BaseTextStyle">
+    <style name="GreenTextStyle" parent="BaseSmallTextStyle">
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/text_accent_green</item>
         <item name="android:textSize">@dimen/text_small_size</item>
     </style>
 
-    <style name="BlueTextStyle" parent="BaseTextStyle">
+    <style name="BlueTextStyle" parent="BaseSmallTextStyle">
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/text_accent_blue</item>
     </style>
 
-    <style name="BoldGrayTextStyle" parent="BaseTextStyle">
-        <item name="android:textStyle">bold</item>
+    <style name="BoldGrayTextStyle" parent="BaseMediumTextStyle">
         <item name="android:textColor">@color/text_secondary</item>
     </style>
 
-    <style name="GrayTextStyle" parent="BaseTextStyle">
-        <item name="android:textStyle">normal</item>
+    <style name="GrayTextStyle" parent="BaseSmallTextStyle">
         <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">@dimen/text_small_size</item>
     </style>
 
-    <style name="HintTextStyle" parent="BaseTextStyle">
+    <style name="HintTextStyle" parent="BaseSmallTextStyle">
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/text_hint</item>
     </style>
 
-    <style name="SmallBoldWhiteTextStyle" parent="BoldWhiteTextStyle">
+    <style name="SmallBoldWhiteTextStyle" parent="BaseMediumTextStyle">
         <item name="android:textSize">@dimen/text_small_size</item>
     </style>
 
-    <style name="MediumBoldWhiteTextStyle" parent="BoldWhiteTextStyle">
+    <style name="MediumBoldWhiteTextStyle" parent="BaseMediumTextStyle">
         <item name="android:textSize">@dimen/text_normal_size</item>
     </style>
 
-    <style name="LargeBoldWhiteTextStyle" parent="BoldWhiteTextStyle">
+    <style name="LargeBoldWhiteTextStyle" parent="BaseSmallTextStyle">
+        <item name="android:textSize">@dimen/text_large_size</item>
+    </style>
+
+    <style name="SmallWhiteTextStyle" parent="BaseSmallTextStyle">
+        <item name="android:textSize">@dimen/text_small_size</item>
+    </style>
+
+    <style name="MediumWhiteTextStyle" parent="BaseSmallTextStyle">
+        <item name="android:textSize">@dimen/text_normal_size</item>
+    </style>
+
+    <style name="LargeWhiteTextStyle" parent="BaseSmallTextStyle">
         <item name="android:textSize">@dimen/text_large_size</item>
     </style>
 
@@ -77,7 +90,7 @@
 
     <style name="ImageCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
         <item name="android:button">@null</item>
-        <item name="android:background">@drawable/checkbox_selector</item>
+        <item name="android:background">@drawable/icon_like</item>
     </style>
 
     <style name="RoundedButtonStyle">
