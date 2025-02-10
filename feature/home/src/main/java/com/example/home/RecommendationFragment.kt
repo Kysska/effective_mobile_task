@@ -77,7 +77,7 @@ class RecommendationFragment : Fragment(R.layout.fragment_recomendation) {
 
     private fun observableCountVacancies() {
         homeViewModel.countVacancies.observe(viewLifecycleOwner) { count ->
-            binding.countVacancy.setFormattedText(com.example.ui.R.string.recommendation_count_vacancy, count)
+            binding.countVacancy.setFormattedText(com.example.ui.R.plurals.vacancies, count)
         }
     }
 

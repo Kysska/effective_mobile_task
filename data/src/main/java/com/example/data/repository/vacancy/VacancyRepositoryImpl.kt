@@ -12,21 +12,29 @@ class VacancyRepositoryImpl(
     private val remoteVacancyDataSource: RemoteVacancyDataSource,
     private val localVacancyDataSource: LocalVacancyDataSource
 ) : VacancyRepository {
-    override fun getAllVacancy(): Single<List<Vacancy>> {
+    override fun getAllVacancy(): Observable<List<Vacancy>> {
         return remoteVacancyDataSource.getVacancies()
             .flatMap { vacancies ->
-                val favoriteVacancies = vacancies.filter { it.isFavorite }
-
+                getAllFavoriteVacancy()
+                    .first(emptyList())
+                    .map { favoriteVacancies ->
+                        val favoriteIds = favoriteVacancies.map { it.id }.toSet()
+                        vacancies.map { it.copy(isFavorite = it.id in favoriteIds) }
+                    }
+            }
+            .flatMap { updatedVacancies ->
+                val favoriteVacancies = updatedVacancies.filter { it.isFavorite }
                 if (favoriteVacancies.isNotEmpty()) {
                     Completable.merge(
                         favoriteVacancies.map { vacancy ->
                             localVacancyDataSource.insertVacancy(vacancy)
                         }
-                    ).andThen(Single.just(vacancies))
+                    ).andThen(Single.just(updatedVacancies))
                 } else {
-                    Single.just(vacancies)
+                    Single.just(updatedVacancies)
                 }
             }
+            .toObservable()
     }
 
     override fun getAllFavoriteVacancy(): Observable<List<Vacancy>> {

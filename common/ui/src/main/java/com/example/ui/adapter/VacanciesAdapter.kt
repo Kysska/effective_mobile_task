@@ -20,7 +20,7 @@ class VacanciesAdapter(private val onFavoriteChanged: (VacancyView, Boolean) -> 
             binding.town.text = vacancyView.town
             binding.company.text = vacancyView.company
             binding.publishedDate.setFormattedText(R.string.vacancy_card_published_date, vacancyView.formattedPublishedDate)
-            binding.nowWatchingText.setFormattedText(R.string.vacancy_card_now_watching, vacancyView.lookingNumber)
+            binding.nowWatchingText.setFormattedText(R.plurals.people, vacancyView.lookingNumber)
             binding.experience.text = vacancyView.previewExperience
         }
     }

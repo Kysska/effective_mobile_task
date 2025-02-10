@@ -1,16 +1,17 @@
 package com.example.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.core.listeners.FavoriteVacanciesListener
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.HomeComponentProvider
 import com.example.home.navigation.NavigationInterface
 import com.example.ui.adapter.OffersAdapter
 import com.example.ui.adapter.VacanciesAdapter
-import com.example.ui.utils.FavoriteEvents
 import com.example.ui.utils.setFormattedText
 import com.example.ui.view.ViewState
 import javax.inject.Inject
@@ -23,12 +24,23 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     @Inject
     lateinit var homeViewModel: HomeViewModel
 
+    private var favoriteVacanciesListener: FavoriteVacanciesListener? = null
+
     private val offersAdapter by lazy {
         OffersAdapter()
     }
 
     private val vacanciesAdapter by lazy {
         VacanciesAdapter { vacancy, isCheched -> homeViewModel.onFavoriteCheckboxChanged(vacancy, isCheched) }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is FavoriteVacanciesListener) {
+            favoriteVacanciesListener = context
+        } else {
+            throw RuntimeException("$context must implement favoriteVacancyListener")
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -97,6 +109,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     if (state.data.isNotEmpty()) {
                         vacanciesAdapter.submitList(state.data)
                     }
+                    favoriteVacanciesListener?.onCountPass(state.data.filter { vacancy -> vacancy.isFavorite }.size)
                 }
                 is ViewState.Error -> {
                     binding.progressBar.progressBar.visibility = View.GONE
@@ -107,19 +120,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun observableCountVacancies() {
         homeViewModel.countVacancies.observe(viewLifecycleOwner) { count ->
-            binding.floatingButton.setFormattedText(com.example.ui.R.string.home_title_button, count)
-        }
-    }
-
-    private fun observableCountFavoriteVacancies() {
-        homeViewModel.countVacancies.observe(viewLifecycleOwner) { count ->
-            FavoriteEvents.postFavoriteCount(count)
+            binding.floatingButton.setFormattedText(com.example.ui.R.plurals.vacancies, count)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        favoriteVacanciesListener = null
     }
 
     companion object {

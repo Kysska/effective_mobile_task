@@ -113,7 +113,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/material_padding_small"
-        android:layout_marginTop="@dimen/material_margin_normal"
+        android:layout_marginTop="@dimen/material_margin_super_small"
         android:background="@drawable/green_button_background"
         android:gravity="center"
         android:text="@string/vacancy_card_button"

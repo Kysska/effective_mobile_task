@@ -90,7 +90,7 @@
 
     <style name="ImageCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
         <item name="android:button">@null</item>
-        <item name="android:background">@drawable/icon_like</item>
+        <item name="android:background">@drawable/checkbox_selector</item>
     </style>
 
     <style name="RoundedButtonStyle">

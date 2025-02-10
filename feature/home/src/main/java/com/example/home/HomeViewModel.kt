@@ -87,10 +87,6 @@ class HomeViewModel(
         )
     }
 
-    fun getCountFavorite(count: Int) {
-        _countFavoriteVacancies.value = count
-    }
-
     fun onFavoriteCheckboxChanged(vacancyView: VacancyView, isChecked: Boolean) {
         val vacancy = VacancyMapper.reverseMap(vacancyView)
         if (isChecked) {

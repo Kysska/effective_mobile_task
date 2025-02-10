@@ -36,4 +36,19 @@
 <!--    vacancy recommendation fragment-->
     <string name="recommendation_count_vacancy">%s ваканский</string>
     <string name="recommendation_filter_title">По соответствию</string>
+
+    <plurals name="vacancies">
+        <item quantity="one">%d вакансия</item>
+        <item quantity="few">%d вакансии</item>
+        <item quantity="many">%d вакансий</item>
+        <item quantity="other">%d вакансий</item>
+    </plurals>
+
+    <plurals name="people">
+        <item quantity="one">Сейчас просматривает %d человек</item>
+        <item quantity="few">Сейчас просматривают %d человека</item>
+        <item quantity="many">Сейчас просматривают %d человек</item>
+        <item quantity="other">Сейчас просматривают %d человек</item>
+    </plurals>
+
 </resources>

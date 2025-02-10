@@ -15,7 +15,7 @@ object VacancyMapper : ViewMapper<Vacancy, VacancyView> {
             company = vacancy.company,
             previewExperience = vacancy.previewExperience,
             isFavorite = vacancy.isFavorite,
-            lookingNumber = vacancy.lookingNumber.toString(),
+            lookingNumber = vacancy.lookingNumber,
             formattedPublishedDate = formattedPublishedDate(vacancy.publishedDate)
         )
     }
@@ -29,7 +29,7 @@ object VacancyMapper : ViewMapper<Vacancy, VacancyView> {
             date?.let { outputFormat.format(it) } ?: ""
         } catch (e: Exception) {
             Timber.tag("uncorrected date").e(e)
-            return ""
+            return dateString
         }
     }
 
@@ -41,7 +41,7 @@ object VacancyMapper : ViewMapper<Vacancy, VacancyView> {
             company = to.company,
             previewExperience = to.previewExperience,
             isFavorite = to.isFavorite,
-            lookingNumber = to.lookingNumber.toInt(),
+            lookingNumber = to.lookingNumber,
             publishedDate = to.formattedPublishedDate
         )
     }

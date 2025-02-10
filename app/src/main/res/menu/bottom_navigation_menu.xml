@@ -5,7 +5,7 @@
         android:icon="@drawable/icon_search"
         android:title="@string/search_menu"/>
     <item
-        android:id="@+id/favoriteFragment"
+        android:id="@+id/favoriteFragmentMenu"
         android:icon="@drawable/icon_like"
         android:title="@string/favorite_menu"
         android:actionLayout="@layout/badge"

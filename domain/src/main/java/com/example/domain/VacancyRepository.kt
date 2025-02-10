@@ -6,7 +6,7 @@ import io.reactivex.Observable
 import io.reactivex.Single
 
 interface VacancyRepository {
-    fun getAllVacancy(): Single<List<Vacancy>>
+    fun getAllVacancy(): Observable<List<Vacancy>>
     fun getAllFavoriteVacancy(): Observable<List<Vacancy>>
     fun insertVacancy(vacancy: Vacancy): Completable
     fun deleteVacancy(vacancy: Vacancy): Completable

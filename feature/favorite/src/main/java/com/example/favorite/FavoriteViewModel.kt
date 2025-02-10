@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.ui.view.ViewState
 import com.example.core.util.applySchedulers
 import com.example.domain.VacancyRepository
-import com.example.ui.utils.FavoriteEvents
 import com.example.ui.vo.VacancyView
 import com.example.ui.vo.mapper.VacancyMapper
 import io.reactivex.disposables.CompositeDisposable
@@ -47,7 +46,6 @@ class FavoriteViewModel(
 
     fun getCountVacancies(count: Int) {
         _countVacancies.value = count
-        FavoriteEvents.postFavoriteCount(count)
     }
 
     fun onFavoriteCheckboxChanged(vacancyView: VacancyView, isChecked: Boolean) {
