@@ -7,19 +7,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
-import com.example.core.listeners.FavoriteVacanciesListener
 import com.example.effective_mobile_task.databinding.ActivityMainBinding
+import com.example.effective_mobile_task.di.DiProvider
 import com.example.effective_mobile_task.di.SubComponents
 import com.example.home.navigation.NavigationInterface
 import com.example.ui.utils.showBadge
 import java.util.Locale
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), SubComponents, NavigationInterface,
-    FavoriteVacanciesListener {
+class MainActivity : AppCompatActivity(), SubComponents, NavigationInterface {
 
     private lateinit var binding: ActivityMainBinding
 
+    @Inject
+    lateinit var mainActivityViewModel: MainActivityViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        DiProvider.appComponent().mainActivityComponent.create().inject(this)
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -30,6 +35,9 @@ class MainActivity : AppCompatActivity(), SubComponents, NavigationInterface,
         val navController = host.navController
 
         binding.bottomNavigationView.setupWithNavController(navController)
+
+        observeViewModel()
+        mainActivityViewModel.loadCountFavoriteVacancies()
     }
 
     override fun attachBaseContext(newBase: Context) {
@@ -50,7 +58,9 @@ class MainActivity : AppCompatActivity(), SubComponents, NavigationInterface,
         }
     }
 
-    override fun onCountPass(count: Int) {
-        binding.bottomNavigationView.showBadge(R.id.favoriteFragmentMenu, count)
+    private fun observeViewModel() {
+        mainActivityViewModel.countVacancies.observe(this) { count ->
+            binding.bottomNavigationView.showBadge(R.id.favoriteFragmentMenu, count)
+        }
     }
 }

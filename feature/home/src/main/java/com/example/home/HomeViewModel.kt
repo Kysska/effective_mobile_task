@@ -29,10 +29,6 @@ class HomeViewModel(
     val countVacancies: LiveData<Int>
         get() = _countVacancies
 
-    private val _countFavoriteVacancies = MutableLiveData<Int>()
-    val countFavoriteVacancies: LiveData<Int>
-        get() = _countFavoriteVacancies
-
     private val _offersState = MutableLiveData<ViewState<List<OfferView>>>()
     val offerState: LiveData<ViewState<List<OfferView>>>
         get() = _offersState
@@ -40,6 +36,8 @@ class HomeViewModel(
     private val compositeDisposable = CompositeDisposable()
 
     fun loadOffers() {
+        if (_offersState.value is ViewState.Success) return
+
         _offersState.value = ViewState.Loading
         compositeDisposable.add(
             getOffersUseCase.execute()
@@ -62,6 +60,7 @@ class HomeViewModel(
         compositeDisposable.add(
             getVacanciesUseCase.execute(showAll)
                 .applySchedulers()
+                .doOnError { error -> Timber.e(error, "Error occurred in getVacanciesUseCase") }
                 .subscribe({ vacancies ->
                     _vacanciesState.value = if (vacancies.isNotEmpty()) {
                         val vacancyViewModels = vacancies.map { VacancyMapper.map(it) }
@@ -70,15 +69,18 @@ class HomeViewModel(
                         ViewState.Success(emptyList())
                     }
                 }, { error ->
+                    Timber.e(error, "Error loading vacancies")
                     _vacanciesState.value = ViewState.Error(error)
                 })
         )
     }
 
     fun getCountVacancies() {
+        if (_countVacancies.value != null) return
         compositeDisposable.add(
             getVacanciesUseCase.getAllVacanciesCount()
                 .applySchedulers()
+                .cache()
                 .subscribe({ count ->
                     _countVacancies.value = count
                 }, { error ->

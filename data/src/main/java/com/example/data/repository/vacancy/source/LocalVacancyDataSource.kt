@@ -10,4 +10,5 @@ interface LocalVacancyDataSource {
     fun isVacancyExists(id: String): Single<Boolean>
     fun insertVacancy(vacancy: Vacancy): Completable
     fun deleteVacancy(vacancy: Vacancy): Completable
+    fun getFavoriteCountVacancies(): Observable<Int>
 }

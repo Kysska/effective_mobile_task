@@ -1,12 +1,11 @@
 package com.example.home
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.example.core.listeners.FavoriteVacanciesListener
 import com.example.home.databinding.FragmentHomeBinding
 import com.example.home.di.HomeComponentProvider
 import com.example.home.navigation.NavigationInterface
@@ -24,23 +23,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     @Inject
     lateinit var homeViewModel: HomeViewModel
 
-    private var favoriteVacanciesListener: FavoriteVacanciesListener? = null
-
     private val offersAdapter by lazy {
         OffersAdapter()
     }
 
     private val vacanciesAdapter by lazy {
         VacanciesAdapter { vacancy, isCheched -> homeViewModel.onFavoriteCheckboxChanged(vacancy, isCheched) }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is FavoriteVacanciesListener) {
-            favoriteVacanciesListener = context
-        } else {
-            throw RuntimeException("$context must implement favoriteVacancyListener")
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,36 +72,22 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private fun observableOffers() {
         homeViewModel.offerState.observe(viewLifecycleOwner) { state ->
             when (state) {
-                is ViewState.Loading -> {
-                    binding.progressBar.progressBar.visibility = View.VISIBLE
-                }
+                is ViewState.Loading -> {}
                 is ViewState.Success -> {
-                    binding.progressBar.progressBar.visibility = View.GONE
                     offersAdapter.submitList(state.data)
                 }
-                is ViewState.Error -> {
-                    binding.progressBar.progressBar.visibility = View.GONE
-                }
+                is ViewState.Error -> {}
             }
         }
     }
 
     private fun observableVacancies() {
         homeViewModel.vacanciesState.observe(viewLifecycleOwner) { state ->
-            when (state) {
-                is ViewState.Loading -> {
-                    binding.progressBar.progressBar.visibility = View.VISIBLE
-                }
-                is ViewState.Success -> {
-                    binding.progressBar.progressBar.visibility = View.GONE
-                    if (state.data.isNotEmpty()) {
-                        vacanciesAdapter.submitList(state.data)
-                    }
-                    favoriteVacanciesListener?.onCountPass(state.data.filter { vacancy -> vacancy.isFavorite }.size)
-                }
-                is ViewState.Error -> {
-                    binding.progressBar.progressBar.visibility = View.GONE
-                }
+            binding.progressBar.progressBar.isVisible = state is ViewState.Loading
+            vacanciesAdapter.updateState(state)
+
+            if (state is ViewState.Success && state.data.isEmpty()) {
+                return@observe
             }
         }
     }
@@ -127,11 +101,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        favoriteVacanciesListener = null
     }
 
     companion object {

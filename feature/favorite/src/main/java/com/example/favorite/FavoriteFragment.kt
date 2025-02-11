@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.core.listeners.FavoriteVacanciesListener
+import androidx.core.view.isVisible
 import com.example.ui.view.ViewState
 import com.example.favorite.databinding.FragmentFavoriteBinding
 import com.example.favorite.di.FavoriteComponentProvider
@@ -23,19 +23,8 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     @Inject
     lateinit var favoriteViewModel: FavoriteViewModel
 
-    private var favoriteVacanciesListener: FavoriteVacanciesListener? = null
-
     private val vacanciesAdapter by lazy {
         VacanciesAdapter  { vacancy, isCheched -> favoriteViewModel.onFavoriteCheckboxChanged(vacancy, isCheched) }
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if(context is FavoriteVacanciesListener) {
-            favoriteVacanciesListener = context
-        } else{
-            throw RuntimeException("$context must implement favoriteVacancyListener")
-        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,23 +57,10 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
     private fun observableVacancies() {
         favoriteViewModel.vacanciesState.observe(viewLifecycleOwner) { state ->
-            when (state) {
-                is ViewState.Loading -> {
-                    binding.progressBar.progressBar.visibility = View.VISIBLE
-                }
-                is ViewState.Success -> {
-                    binding.progressBar.progressBar.visibility = View.GONE
-                    binding.favoriteRecyclerView.visibility = View.VISIBLE
+            binding.progressBar.progressBar.isVisible = state is ViewState.Loading
+            binding.favoriteRecyclerView.isVisible = state is ViewState.Success && state.data.isNotEmpty()
 
-                    if (state.data.isNotEmpty()) { vacanciesAdapter.submitList(state.data) }
-                    else{ binding.favoriteRecyclerView.visibility = View.GONE }
-
-                    favoriteVacanciesListener?.onCountPass(state.data.size)
-                }
-                is ViewState.Error -> {
-                    binding.progressBar.progressBar.visibility = View.GONE
-                }
-            }
+            vacanciesAdapter.updateState(state)
         }
     }
 
@@ -97,11 +73,6 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        favoriteVacanciesListener = null;
     }
 
     companion object {

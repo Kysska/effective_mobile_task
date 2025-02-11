@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.home.databinding.FragmentRecomendationBinding
@@ -58,19 +59,11 @@ class RecommendationFragment : Fragment(R.layout.fragment_recomendation) {
 
     private fun observableVacancies() {
         homeViewModel.vacanciesState.observe(viewLifecycleOwner) { state ->
-            when (state) {
-                is ViewState.Loading -> {
-                    binding.progressBar.progressBar.visibility = View.VISIBLE
-                }
-                is ViewState.Success -> {
-                    binding.progressBar.progressBar.visibility = View.GONE
-                    if (state.data.isNotEmpty()) {
-                        vacanciesAdapter.submitList(state.data)
-                    }
-                }
-                is ViewState.Error -> {
-                    binding.progressBar.progressBar.visibility = View.GONE
-                }
+            binding.progressBar.progressBar.isVisible = state is ViewState.Loading
+            vacanciesAdapter.updateState(state)
+
+            if (state is ViewState.Success && state.data.isEmpty()) {
+                return@observe
             }
         }
     }

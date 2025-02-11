@@ -50,6 +50,13 @@ class LocalVacancyDataSourceImpl(
             }
     }
 
+    override fun getFavoriteCountVacancies(): Observable<Int> {
+        return vacancyDao.getCountFavoriteVacancies()
+            .doOnError { throwable ->
+                Timber.tag(TAG).e(throwable)
+            }
+    }
+
     companion object {
         private const val TAG = "LocalVacancy"
     }

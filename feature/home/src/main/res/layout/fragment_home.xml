@@ -29,8 +29,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"/>
+                android:layout_height="wrap_content" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/offerRecyclerView"
@@ -75,6 +74,7 @@
                 android:gravity="center"
                 android:padding="@dimen/material_padding_small"
                 android:layout_marginTop="@dimen/material_margin_small"
+                android:layout_marginEnd="@dimen/material_margin_small"
                 android:text="@string/home_title_button"
                 android:textAppearance="@style/LargeBoldWhiteTextStyle"
                 app:layout_constraintBottom_toBottomOf="parent"

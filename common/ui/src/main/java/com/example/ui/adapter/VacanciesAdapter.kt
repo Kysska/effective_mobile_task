@@ -5,49 +5,97 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ui.R
+import com.example.ui.databinding.EmptyDataBinding
 import com.example.ui.databinding.VacancyItemBinding
+import com.example.ui.databinding.VacancyLoadingItemBinding
 import com.example.ui.utils.setFormattedText
+import com.example.ui.view.ViewState
 import com.example.ui.vo.VacancyView
 
-class VacanciesAdapter(private val onFavoriteChanged: (VacancyView, Boolean) -> Unit) : RecyclerView.Adapter<VacanciesAdapter.VacancyViewHolder>() {
+class VacanciesAdapter(private val onFavoriteChanged: (VacancyView, Boolean) -> Unit) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var vacancies: List<VacancyView> = emptyList()
+    private var state: ViewState<List<VacancyView>> = ViewState.Loading
 
-    inner class VacancyViewHolder(val binding: VacancyItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    companion object {
+        private const val TYPE_LOADING = 0
+        private const val TYPE_ERROR = 1
+        private const val TYPE_VACANCY = 2
+    }
 
-        fun bind(vacancyView: VacancyView) {
-            binding.title.text = vacancyView.title
-            binding.town.text = vacancyView.town
-            binding.company.text = vacancyView.company
-            binding.publishedDate.setFormattedText(R.string.vacancy_card_published_date, vacancyView.formattedPublishedDate)
-            binding.nowWatchingText.setFormattedText(R.plurals.people, vacancyView.lookingNumber)
-            binding.experience.text = vacancyView.previewExperience
+    override fun getItemViewType(position: Int): Int {
+        return when (state) {
+            is ViewState.Loading -> TYPE_LOADING
+            is ViewState.Error -> TYPE_ERROR
+            is ViewState.Success -> TYPE_VACANCY
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VacancyViewHolder {
-        val binding = VacancyItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return VacancyViewHolder(binding)
-    }
-
-    override fun onBindViewHolder(holder: VacancyViewHolder, position: Int) {
-        if (position >= vacancies.size) return
-
-        holder.bind(vacancies[position])
-
-        holder.binding.favoriteCheckBox.setOnCheckedChangeListener(null)
-        holder.binding.favoriteCheckBox.isChecked = vacancies[position].isFavorite
-        holder.binding.favoriteCheckBox.setOnCheckedChangeListener { _, isChecked ->
-            onFavoriteChanged(vacancies[position], isChecked)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        val inflater = LayoutInflater.from(parent.context)
+        return when (viewType) {
+            TYPE_LOADING -> LoadingViewHolder(VacancyLoadingItemBinding.inflate(inflater, parent, false))
+            TYPE_ERROR -> ErrorViewHolder(EmptyDataBinding.inflate(inflater, parent, false))
+            TYPE_VACANCY -> VacancyViewHolder(VacancyItemBinding.inflate(inflater, parent, false))
+            else -> throw IllegalArgumentException("Unknown view type: $viewType")
         }
     }
 
-    override fun getItemCount(): Int = vacancies.size
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (holder) {
+            is LoadingViewHolder -> holder.bind()
+            is ErrorViewHolder -> holder.bind()
+            is VacancyViewHolder -> {
+                val successState = state as ViewState.Success
+                holder.bind(successState.data[position], onFavoriteChanged)
+            }
+        }
+    }
 
-    fun submitList(newVacancies: List<VacancyView>) {
-        val diffResult = DiffUtil.calculateDiff(VacanciesDiffCallback(vacancies, newVacancies))
-        vacancies = newVacancies
-        diffResult.dispatchUpdatesTo(this)
+    override fun getItemCount(): Int {
+        return when (state) {
+            is ViewState.Loading -> 10
+            is ViewState.Success -> {
+                val vacancies = (state as ViewState.Success).data
+                if (vacancies.isEmpty()) 1 else vacancies.size
+            }
+            else -> 1
+        }
+    }
+
+    fun updateState(newState: ViewState<List<VacancyView>>) {
+        if (state is ViewState.Success && newState is ViewState.Success) {
+            val diffResult = DiffUtil.calculateDiff(VacanciesDiffCallback((state as ViewState.Success).data, newState.data))
+            state = newState
+            diffResult.dispatchUpdatesTo(this)
+        } else {
+            state = newState
+            notifyDataSetChanged()
+        }
+    }
+
+    class LoadingViewHolder(private val binding: VacancyLoadingItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind() {}
+    }
+
+    class ErrorViewHolder(private val binding: EmptyDataBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind() {}
+    }
+
+    class VacancyViewHolder(private val binding: VacancyItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(vacancy: VacancyView, onFavoriteChanged: (VacancyView, Boolean) -> Unit) {
+            binding.title.text = vacancy.title
+            binding.town.text = vacancy.town
+            binding.company.text = vacancy.company
+            binding.publishedDate.setFormattedText(R.string.vacancy_card_published_date, vacancy.formattedPublishedDate)
+            binding.nowWatchingText.setFormattedText(R.plurals.people, vacancy.lookingNumber)
+            binding.experience.text = vacancy.previewExperience
+
+            binding.favoriteCheckBox.setOnCheckedChangeListener(null)
+            binding.favoriteCheckBox.isChecked = vacancy.isFavorite
+            binding.favoriteCheckBox.setOnCheckedChangeListener { _, isChecked ->
+                onFavoriteChanged(vacancy, isChecked)
+            }
+        }
     }
 }
 

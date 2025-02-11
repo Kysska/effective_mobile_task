@@ -67,6 +67,10 @@ dependencies {
     implementation(project(":feature:favorite"))
     implementation(project(":common:ui"))
 
+    //RxJava
+    implementation(libs.rxjava)
+    implementation(libs.rxjava.android)
+
     //Dagger
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)

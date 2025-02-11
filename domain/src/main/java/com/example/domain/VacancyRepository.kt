@@ -11,4 +11,5 @@ interface VacancyRepository {
     fun insertVacancy(vacancy: Vacancy): Completable
     fun deleteVacancy(vacancy: Vacancy): Completable
     fun isVacancyExists(id: String): Single<Boolean>
+    fun getFavoriteCountVacancy(): Observable<Int>
 }

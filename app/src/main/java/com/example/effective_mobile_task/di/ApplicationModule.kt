@@ -10,11 +10,12 @@ import com.example.home.di.HomeComponent
 import dagger.Module
 
 @Module(
-    subcomponents = [HomeComponent::class, FavoriteComponent::class],
+    subcomponents = [HomeComponent::class, FavoriteComponent::class, MainActivityComponent::class],
     includes = [RemoteDataModule::class,
         LocalDataModule::class,
         DatabaseModule::class,
         RepositoryModule::class,
-        DomainModule::class]
+        DomainModule::class,
+        MainActivityModule::class]
 )
 class ApplicationModule

@@ -24,4 +24,7 @@ interface VacancyDao {
 
     @Query("SELECT 1 FROM ${DatabaseConstants.VACANCY_TABLE} WHERE ${DatabaseConstants.VacancyColumns.ID} = :id")
     fun isVacancyExists(id: String): Single<Boolean>
+
+    @Query("SELECT COUNT(*) FROM ${DatabaseConstants.VACANCY_TABLE}")
+    fun getCountFavoriteVacancies(): Observable<Int>
 }

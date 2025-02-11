@@ -21,4 +21,5 @@ interface AppComponent {
 
     val homeComponent: HomeComponent.Factory
     val favoriteComponent: FavoriteComponent.Factory
+    val mainActivityComponent: MainActivityComponent.Factory
 }

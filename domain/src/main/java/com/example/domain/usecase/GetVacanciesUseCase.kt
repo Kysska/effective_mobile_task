@@ -3,6 +3,7 @@ package com.example.domain.usecase
 import com.example.domain.VacancyRepository
 import com.example.domain.entity.Vacancy
 import io.reactivex.Observable
+import io.reactivex.Single
 
 class GetVacanciesUseCase(
     private val vacancyRepository: VacancyRepository
@@ -12,9 +13,10 @@ class GetVacanciesUseCase(
             .map { vacancies -> if (showAll) vacancies else vacancies.take(DEFAULT_LIMIT_VACANCIES) }
     }
 
-    fun getAllVacanciesCount(): Observable<Int> {
+    fun getAllVacanciesCount(): Single<Int> {
         return vacancyRepository.getAllVacancy()
             .map { it.size }
+            .firstOrError()
     }
 
     companion object {

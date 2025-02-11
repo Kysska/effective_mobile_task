@@ -36,6 +36,7 @@
 <!--    vacancy recommendation fragment-->
     <string name="recommendation_count_vacancy">%s ваканский</string>
     <string name="recommendation_filter_title">По соответствию</string>
+    <string name="empty_data">Ваканский нет</string>
 
     <plurals name="vacancies">
         <item quantity="one">%d вакансия</item>
